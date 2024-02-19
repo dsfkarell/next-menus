@@ -83,16 +83,7 @@ html,
 body {
   max-width: 100vw;
   overflow-x: hidden;
-}
-
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  padding-right: 0 !important;
 }
 
 a {
@@ -104,4 +95,22 @@ a {
   html {
     color-scheme: dark;
   }
+}
+
+.hoverable {
+  cursor: pointer;
+}
+
+html { 
+  background: url("/images/fondo1.png") no-repeat;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.add-shopping-cart-btn {
+  position: fixed;
+  right: 30px;
+  bottom: 30px;
 }

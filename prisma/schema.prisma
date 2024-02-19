@@ -1,0 +1,38 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Product {
+  id          Int       @id @default(autoincrement())
+  name        String
+  description String?
+  category    String
+  createdAt   DateTime  @default(now())
+  menus       ProductsOnMenu[]
+}
+
+model Menu {
+  id            Int     @id @default(autoincrement())
+  title         String
+  description   String?
+  active        Boolean @default(false)
+  products      ProductsOnMenu[]
+}
+
+model ProductsOnMenu {
+  product_id  Int
+  menu_id     Int
+  product     Product @relation(fields: [product_id], references: [id], onDelete: Cascade)
+  menu        Menu @relation(fields: [menu_id], references: [id], onDelete: Cascade)
+  price       Float
+
+  @@id([menu_id, product_id])
+}
