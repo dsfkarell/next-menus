@@ -87,12 +87,14 @@ almacenando los datos de la aplicación en el fichero *menu.db* dentro de la car
 
 Dicho fichero puede ser leído por cualquier gestor de base de datos que soporte *SQLite*.
 
-## Inicio rápido
+## Ejecución del proyecto
 Después de clonar el repositorio del proyecto, usted debe:
-1. Instalar las dependencias de Node ejecutando el comando `npm install`.
-2. Ejecutar el proyecto con el comando `npm run dev`.
+1. Instalar las dependencias de *NPM* ejecutando el comando `npm install`.
+2. Ejecutar el proyecto. Para ello use una de estas dos variantes:
+    * ejecutando el comando `npm run dev`. Esta opción permite una ejecución básica del proyecto en modo desarrollo.
+    * o utilizando los comandos `npm run build`, seguido de `npm run start`. Esta variante permite generar una versión optimizada de la aplicación en producción.
 
-Al realizar los pasos anteriores, el proyecto estará ejecutándose en la dirección local http://localhost:3000, el cual podrá acceder desde su navegador y podrá visualizar e interactuar con el sistema.
+Al realizar los pasos anteriores (en cualquiera de sus variantes), el proyecto estará ejecutándose por defecto en la dirección local http://localhost:3000, al cual podrá acceder desde su navegador para interactuar con el sistema.
 
 ## Solución desarrollada
 ### Principales funcionalidades
@@ -200,10 +202,14 @@ DATABASE_URL="file:./menus.db"
 storing the application data in the *menu.db* file inside the `./prism` folder.
 This file could be read by any database manager that supports *SQLite*.
 
-## Quickstart
-After cloning the project repository, you must:
-1. Install the Node dependencies by running the `npm install` command.
-2. Run the project with the `npm run dev` command.
+## Project execution
+After cloning the project repository, you should:
+1. Install the *NPM* dependencies by running the `npm install` command.
+2. Run the project. To do this use one of these two variants:
+    * running the `npm run dev` command. This option allows a basic execution of the project in development mode.
+    * or by using the `npm run build` command, followed by `npm run start`. This variant allows generating an optimized version of the application in production.
+
+By performing the above steps (in any of its variants), the project will be running by default at the local address http://localhost:3000, which you will be able to access from your web browser to interact with the system.
 
 ## Solution developed
 ### Main functionalities
