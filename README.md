@@ -1,5 +1,5 @@
 # DOCUMENTACIÓN EN ESPAÑOL
-Este es un proyecto de [Next.js](https://nextjs.org/) creado con [`npx create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app), para la gestión de Menús de restaurantes y otras entidades dedicadas a la gastronomía.
+Este es un proyecto de [Next.js](https://nextjs.org/) creado desde cero con [`npx create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app), para la gestión de Menús de restaurantes y otras entidades dedicadas a la gastronomía.
 
 ## Objetivos
 1. Desarrollar una aplicación web de planificación de menús con React, TypeScript
@@ -54,9 +54,6 @@ Después de clonar el repositorio del proyecto, usted debe:
 Al realizar los pasos anteriores, el proyecto estará ejecutándose en la dirección local http://localhost:3000, el cual podrá acceder desde su navegador y podrá visualizar e interactuar con el sistema.
 
 ## Solución desarrollada
-### Interfaz de usuario
-#### Página principal
-
 ### Principales funcionalidades
 1. Adicionar productos.
 2. Editar productos.
@@ -80,8 +77,9 @@ Al realizar los pasos anteriores, el proyecto estará ejecutándose en la direcc
 - Para agregar más cantidades de un mismo producto al carrito, se debe agregar el mismo tantas veces se desee tener.
 - Por ser un sistema pequeño, los listados carecen de paginación.
 
-# DOCUMENTATION IN ENGLISH
-This is a [Next.js](https://nextjs.org/) project created with [`npx create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app), for the management of Menus of restaurants and other entities dedicated to gastronomy.
+
+# ENGLISH DOCUMENTATION
+This is a [Next.js](https://nextjs.org/) project created from scratch with [`npx create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app), for the management of restaurant's Menus and other companies dedicated to gastronomy.
 
 ## Objectives
 1. Develop a menu planning web application with React, TypeScript and NodeJS.
@@ -89,13 +87,12 @@ This is a [Next.js](https://nextjs.org/) project created with [`npx create-next-
 
 ## Sections and Tasks:
 - Design and Structure:
-    Create a web application with responsive and attractive design 2.
+    1. Create a web application with responsive and attractive design.
     2. Include header, title and navigation menu.
     3. Design sections for weekly menu creation and display.
 
-
 - Functionality (JavaScript):
-    Allow users to create custom weekly menus 2.
+    1. Allow users to create custom weekly menus.
     2. Implement searching and adding recipes to menus from a mock source.
     3. Enable editing and deletion of items from menus.
     4. Generate shopping lists based on the selected items in the menus.
@@ -109,6 +106,48 @@ This is a [Next.js](https://nextjs.org/) project created with [`npx create-next-
 |[Next.js](https://nextjs.org/)|v14.1.0|Framework backend|
 |[React](https://react.dev/)|v18.2.0|Framework frontend|
 |[Typescript](typescript)|v5.3.3|Programming language|
-|v5.3.3|[SQLite](https://www.sqlite.org/)|-|Database|
+|[SQLite](https://www.sqlite.org/)|-|Database|
 
-Translated with DeepL.com (free version)
+### Libraries used in the development
+|Library|Version|Description|
+|-|-|-|
+|[@mui/material](https://mui.com/material-ui)|v5.15.10|Framework for UI/UX layout|
+|[@mui/icons-material](https://mui.com/material-ui/getting-started/installation/#icons)|v5.15.10|Material UI icons|
+|[prism](https://www.prisma.io/)|v5.9.1|ORM|
+|[@reduxjs/toolkit](https://redux-toolkit.js.org/)|v2.2.1|For handling global states in the application|
+
+### Other tools used in the development
+|Tool|Version|Description|
+|-|-|-|
+|[VS Code](https://code.visualstudio.com/)|v1.86.2|Integrated development environment|
+|[Thunder Client](https://marketplace.visualstudio.com/items?itemName=rangav.vscode-thunder-client) extension|v2.17.8|Extension for testing API Rest in VS Code|
+|[SQLite Viewer](https://marketplace.visualstudio.com/items?itemName=qwtel.sqlite-viewer) extension|v0.3.17|Extension to view SQLite database content in VSCode|
+|['React Developer Tools'](https://chromewebstore.google.com/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en) extension|v5.0.0|Google Chrome extension for inspecting React components, editing props and states, and identifying performance issues.
+
+## Quickstart
+After cloning the project repository, you must:
+1. Install the Node dependencies by running the `npm install` command.
+2. Run the project with the `npm run dev` command.
+
+## Solution developed
+### Main functionalities
+1. Add products.
+2. Edit products.
+3. Delete products.
+4. Search products (filter by name).
+5. Add menu.
+6. Edit menu.
+7. Delete menu.
+8. Activate menu.
+9. To see products of a menu grouped by categories.
+10. Select products of interest.
+11. Add selected products to the shopping cart.
+12. View products in the shopping cart and the total amount.
+13. Remove products from the shopping cart.
+
+### Final clarifications and improvement suggestions
+- The system is fully responsive and has a user-friendly graphical interface.
+- Due to time constraints an authentication to the system was not included.
+- For the same reason above, the system does not allow you to upload a custom image, so it has static images.
+- To add more quantities of the same product to the cart, you must add the same product as many times as you want to have.
+- Being a small system, the listings are not paginated.
