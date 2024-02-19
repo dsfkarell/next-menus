@@ -30,7 +30,7 @@ y NodeJS.
 |[Typescript](typescript)|v5.3.3|Lenguaje de programación|
 |[SQLite](https://www.sqlite.org/)|-|Base de datos|
 
-### Librerías utilizadas en el desarrollo
+### Librerías NPM utilizadas en el desarrollo
 |Librería|Versión|Descripción|
 |-|-|-|
 |[@mui/material](https://mui.com/material-ui)|v5.15.10|Framework para maquetar UI/UX|
@@ -45,6 +45,47 @@ y NodeJS.
 |Extensión [Thunder Client](https://marketplace.visualstudio.com/items?itemName=rangav.vscode-thunder-client)|v2.17.8|Extension para probar API Rest en VS Code|
 |Extensión [SQLite Viewer](https://marketplace.visualstudio.com/items?itemName=qwtel.sqlite-viewer)|v0.3.17|Extensión para visualizar el contenido de bases de datos SQLite en VSCode|
 |Extensión ['React Developer Tools'](https://chromewebstore.google.com/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en)|v5.0.0|Extensión de Google Chrome para inspeccionar componentes React, editar props y estados, e identificar problemas de rendimiento.|
+
+### Estructura de la base de datos
+Por las características del proyecto, para la persistencia de la información se utilizó __SQLite__ como base de datos relacional y el __ORM Prisma__. Con el msimo, a partir de las funcionalidades que requiere el sistema, se definió en el fichero `./prisma/schema.prisma` el siguiente esquema para los modelos:
+```
+model Product {
+  id          Int       @id @default(autoincrement())
+  name        String
+  description String?
+  category    String
+  createdAt   DateTime  @default(now())
+  menus       ProductsOnMenu[]
+}
+
+model Menu {
+  id            Int     @id @default(autoincrement())
+  title         String
+  description   String?
+  active        Boolean @default(false)
+  products      ProductsOnMenu[]
+}
+
+model ProductsOnMenu {
+  product_id  Int
+  menu_id     Int
+  product     Product @relation(fields: [product_id], references: [id], onDelete: Cascade)
+  menu        Menu @relation(fields: [menu_id], references: [id], onDelete: Cascade)
+  price       Float
+
+  @@id([menu_id, product_id])
+}
+```
+
+Con el esquema anterior se puede apreciar la estructura de la base de datos, con dos modelos: __*Product*__ y __*Menu*__; y una relación de mucho-a-mucho (*many-to-many*) entre ambas que genera una nueva tabla llamada __*ProductsOnMenu*__, que almacena además el *precio* de un producto en un menú determinado.
+
+La base de datos *SQLite* se almacena en el fichero que se especifique en el fichero de configuración del proyecto (`.env`). En este caso
+```
+DATABASE_URL="file:./menus.db"
+```
+almacenando los datos de la aplicación en el fichero *menu.db* dentro de la carpeta `./prisma`.
+
+Dicho fichero puede ser leído por cualquier gestor de base de datos que soporte *SQLite*.
 
 ## Inicio rápido
 Después de clonar el repositorio del proyecto, usted debe:
@@ -123,6 +164,41 @@ This is a [Next.js](https://nextjs.org/) project created from scratch with [`npx
 |[Thunder Client](https://marketplace.visualstudio.com/items?itemName=rangav.vscode-thunder-client) extension|v2.17.8|Extension for testing API Rest in VS Code|
 |[SQLite Viewer](https://marketplace.visualstudio.com/items?itemName=qwtel.sqlite-viewer) extension|v0.3.17|Extension to view SQLite database content in VSCode|
 |['React Developer Tools'](https://chromewebstore.google.com/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en) extension|v5.0.0|Google Chrome extension for inspecting React components, editing props and states, and identifying performance issues.
+
+### Database structure
+Due to the characteristics of the project, __SQLite__ was used as a relational database and the __ORM Prisma__ for the persistence of the information. With the same, based on the functionalities required by the system, the following schema for the models was defined in the file `./prisma/schema.prisma`:
+```
+model Product {
+  id Int @id @default(autoincrement())
+  name String
+  description String?
+  category String
+  createdAt DateTime @default(now())
+  menus ProductsOnMenu[]
+}
+model Menu {
+  id Int @id @default(autoincrement())
+  title String
+  description String?
+  active Boolean @default(false)
+  products ProductsOnMenu[]
+}
+model ProductsOnMenu {
+  product_id Int
+  menu_id Int
+  product Product Product @relation(fields: [product_id], references: [id], onDelete: Cascade)
+  menu Menu @relation(fields: [menu_id], references: [id], onDelete: Cascade)
+  price Float
+  @@id([menu_id, product_id])
+}
+```
+With the above schema you can see the structure of the database, with two models: __*Product*__ and __*Menu*__; and a *many-to-many* relationship between the two that generates a new table called __*ProductsOnMenu*__, which also stores the *price* of a product in a given menu.
+The *SQLite* database is stored in the file specified in the project configuration file (`.env`). In this case
+```
+DATABASE_URL="file:./menus.db"
+```
+storing the application data in the *menu.db* file inside the `./prism` folder.
+This file could be read by any database manager that supports *SQLite*.
 
 ## Quickstart
 After cloning the project repository, you must:
