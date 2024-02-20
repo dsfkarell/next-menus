@@ -31,9 +31,12 @@ jobs:
       - name: Build step
         run: "npm install && npm run build" # 📝 Update the build command(s) if necessary
 
+      - name: Show Dir
+        run: "dir ./"
+
       - name: Upload to Deno Deploy
         uses: denoland/deployctl@v1
         with:
           project: "bitter-bear-85"
           entrypoint: "https://deno.land/std@0.188.0/http/file_server.ts" # 📝 Update the entrypoint if necessary
-          root: "out" # 📝 Update the root if necessary
+          root: ".next" # 📝 Update the root if necessary
